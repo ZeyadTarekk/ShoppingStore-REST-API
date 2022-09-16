@@ -35,7 +35,7 @@ export class UserStore {
       throw new Error(`Could not find user ${id}. Error: ${err}`);
     }
   }
-  
+
   async create(user: User): Promise<User> {
     try {
       console.log("Model user", user);
@@ -60,5 +60,28 @@ export class UserStore {
     } catch (err) {
       throw new Error(`unable to create user (${user.id}) : ${err}`);
     }
+  }
+
+  async authanticate(
+    first_name: string,
+    last_name: string,
+    password: string
+  ): Promise<User | null> {
+    const connection = await Client.connect();
+
+    const sql =
+      "SELECT password FROM users WHERE first_name=($1) and last_name=($2)";
+
+    const result = await connection.query(sql, [first_name, last_name]);
+
+    if (result.rows.length > 0) {
+      const pepper = process.env.BCRYPT_PASSWORD;
+      const user = result.rows[0];
+      console.log(user);
+
+      if (bcrypt.compareSync(password + pepper, user.password)) return user;
+    }
+
+    return null;
   }
 }

@@ -26,10 +26,20 @@ const create = async (req: express.Request, res: express.Response) => {
   res.json(user);
 };
 
+const auth = async (req: express.Request, res: express.Response) => {
+  const user = await store.authanticate(
+    req.body.first_name,
+    req.body.last_name,
+    req.body.password
+  );
+  res.json(user);
+};
+
 const user_routes = (app: express.Application) => {
   app.get("/users", index);
   app.get("/users/:id", show);
   app.post("/users", create);
+  app.post("/authanticate", auth);
 };
 
 export default user_routes;
