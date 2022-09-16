@@ -30,7 +30,6 @@ const show = async (req: express.Request, res: express.Response) => {
 };
 
 const create = async (req: express.Request, res: express.Response) => {
-  console.log("Entered create");
   const newUser: User = {
     id: 0,
     first_name: req.body.first_name,
@@ -40,7 +39,6 @@ const create = async (req: express.Request, res: express.Response) => {
   try {
     const user = await store.create(newUser);
     const token = jwt.sign({ user: newUser }, process.env.TOKEN_SECRET);
-    console.log(token);
     res.json(token);
   } catch (err) {
     res.status(400);

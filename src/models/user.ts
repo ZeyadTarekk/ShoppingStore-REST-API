@@ -38,7 +38,6 @@ export class UserStore {
 
   async create(user: User): Promise<User> {
     try {
-      console.log("Model user", user);
       const pepper = process.env.BCRYPT_PASSWORD;
       const saltsRounds = process.env.SALT_ROUNDS;
       const connection = await Client.connect();
@@ -77,7 +76,6 @@ export class UserStore {
     if (result.rows.length > 0) {
       const pepper = process.env.BCRYPT_PASSWORD;
       const user = result.rows[0];
-      console.log(user);
 
       if (bcrypt.compareSync(password + pepper, user.password)) return user;
     }
