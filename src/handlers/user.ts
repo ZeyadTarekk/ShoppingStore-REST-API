@@ -6,6 +6,19 @@ const jwt = require("jsonwebtoken");
 
 const store = new UserStore();
 
+const verifyAuthToken = (req: express.Request, res: express.Response, next) => {
+  try {
+    const authorizationHeader = req.headers.authorization;
+    const token = authorizationHeader.split(" ")[1];
+    jwt.verify(token, process.env.TOKEN_SECRET);
+
+    next();
+  } catch (err) {
+    res.status(401);
+    res.json(`Invalid Token`);
+  }
+};
+
 const index = async (req: express.Request, res: express.Response) => {
   const users = await store.index();
   res.json(users);
@@ -45,8 +58,8 @@ const auth = async (req: express.Request, res: express.Response) => {
 };
 
 const user_routes = (app: express.Application) => {
-  app.get("/users", index);
-  app.get("/users/:id", show);
+  app.get("/users", verifyAuthToken, index);
+  app.get("/users/:id", verifyAuthToken, show);
   app.post("/users", create);
   app.post("/authanticate", auth);
 };

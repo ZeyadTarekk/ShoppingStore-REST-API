@@ -14,7 +14,7 @@ const verifyAuthToken = (req: express.Request, res: express.Response, next) => {
     next();
   } catch (err) {
     res.status(401);
-    res.json(`Invalid Token ${err}`);
+    res.json(`Invalid Token `);
   }
 };
 
