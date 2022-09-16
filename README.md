@@ -22,11 +22,9 @@
 - [Contributors](#Contributors)
 - [License](#license)
 
-<!-- ## 📙 About <a name = "about"></a>
+## 📙 About <a name = "about"></a>
 
-- An API that allows you to place images into your frontend with the size set via URL parameters and resize the image based on the entered size.
-- Same the resized image on ```/assets/thumb``` folder
-- If the entered image and size are entered before, Cached version is used rather than generating a new version. -->
+- A RESTful API to support online store.
 
 ## 🔚 API Endpoints <a name = "endpoint"></a>
 
