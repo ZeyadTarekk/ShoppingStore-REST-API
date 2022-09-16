@@ -1,26 +1,13 @@
 import { Product, ProductStore } from "../product";
-import { User, UserStore } from "../user";
+import { User } from "../user";
 const supertest = require("supertest");
 import app from "../../server";
-import Client from "../../database";
 const store = new ProductStore();
 const request = supertest(app);
 
 let token;
 
-describe("Book Model", () => {
-  beforeAll(async () => {
-    const testUser: User = {
-      id: 0,
-      first_name: "zeyad",
-      last_name: "tarek",
-      password: "1234",
-    };
-
-    const requestData = JSON.stringify(testUser);
-    const response = await request.post("/users", requestData);
-    token = response.body;
-  });
+describe("Product Model", () => {
   it("should have an index method", () => {
     expect(store.index).toBeDefined();
   });
@@ -64,5 +51,42 @@ describe("Book Model", () => {
       price: 23,
       id: 1,
     });
+  });
+});
+
+describe("Product Endpoint", () => {
+  beforeAll(async () => {
+    const testUser: User = {
+      id: 0,
+      first_name: "zeyad",
+      last_name: "tarek",
+      password: "1234",
+    };
+
+    const requestData = JSON.stringify(testUser);
+    const response = await request.post("/users", requestData);
+    token = response.body;
+  });
+
+  it("Test the index endpoint", async () => {
+    const response = await request.get("/products");
+    expect(response.body).toEqual([{ id: 1, name: "test product", price: 23 }]);
+  });
+
+  it("Test the show endpoint", async () => {
+    const response = await request.get("/products/1");
+    expect(response.body).toEqual({ id: 1, name: "test product", price: 23 });
+  });
+
+  it("Test the create endpoint", async () => {
+    const requestData = {
+      name: "test product",
+      price: 21,
+    };
+    const response = await request
+      .post("/products")
+      .set("Authorization", `Bearer ${token}`)
+      .send(requestData);
+    expect(response.body).toEqual({ id: 2, name: "test product", price: 21 });
   });
 });

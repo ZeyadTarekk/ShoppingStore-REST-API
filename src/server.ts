@@ -8,6 +8,7 @@ import orderRoutes from "./handlers/order";
 const address: string = "0.0.0.0:3000";
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", function (req: express.Request, res: express.Response) {
