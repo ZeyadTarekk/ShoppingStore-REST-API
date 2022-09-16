@@ -7,8 +7,8 @@
     "build": "npx tsc",
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "migrageup:test": "db-migrate up",
-    "migragedown:test": "db-migrate down",
+    "migrageup:test": "db-migrate --env test up",
+    "migragedown:test": "db-migrate --env test down",
     "test": "set ENV=test && npm run build && npm run migrageup:test && jasmine && npm run migragedown:test",
     "tsc": "tsc"
   },
