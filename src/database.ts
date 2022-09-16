@@ -3,7 +3,7 @@ import { Pool } from "pg";
 
 dotenv.config();
 
-let Client;
+let Client: Pool;
 
 console.log(process.env.ENV);
 
