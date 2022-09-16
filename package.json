@@ -4,9 +4,12 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
+    "build": "npx tsc",
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "test": "jasmine-ts",
+    "migrageup:test": "db-migrate up",
+    "migragedown:test": "db-migrate down",
+    "test": "set ENV=test && npm run build && npm run migrageup:test && jasmine && npm run migragedown:test",
     "tsc": "tsc"
   },
   "author": "Zeyad Tarek",
@@ -21,7 +24,6 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "pg": "^8.8.0",
-    "tsc": "^2.0.4",
     "typescript": "^4.8.3"
   },
   "devDependencies": {
