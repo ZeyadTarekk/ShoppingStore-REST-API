@@ -7,7 +7,7 @@ const request = supertest(app);
 
 let token;
 
-describe("Product Model", () => {
+describe("Order Model", () => {
   it("should have allUserOrders method", () => {
     expect(store.allUserOrders).toBeDefined();
   });
@@ -27,7 +27,7 @@ describe("Product Model", () => {
   });
 });
 
-describe("Product Endpoint", () => {
+describe("Order Endpoint", () => {
   beforeAll(async () => {
     const testUser: User = {
       id: 0,
