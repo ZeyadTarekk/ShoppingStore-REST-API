@@ -8,10 +8,11 @@ const index = async (req: express.Request, res: express.Response) => {
   const users = await store.index();
   res.json(users);
 };
-// const show = async (req: express.Request, res: express.Response) => {
-//   const product = await store.show(req.params.id);
-//   res.json(product);
-// };
+
+const show = async (req: express.Request, res: express.Response) => {
+  const product = await store.show(req.params.id);
+  res.json(product);
+};
 
 const create = async (req: express.Request, res: express.Response) => {
   console.log("Entered create");
@@ -21,13 +22,13 @@ const create = async (req: express.Request, res: express.Response) => {
     last_name: req.body.last_name,
     password: req.body.password,
   };
-  console.log("new user", newUser);
   const user = await store.create(newUser);
   res.json(user);
 };
 
 const user_routes = (app: express.Application) => {
   app.get("/users", index);
+  app.get("/users/:id", show);
   app.post("/users", create);
 };
 
