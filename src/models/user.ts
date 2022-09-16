@@ -4,7 +4,7 @@ export type User = {
   id: Number;
   first_name: string;
   last_name: string;
-  password: Number;
+  password: string;
 };
 
 export class UserStore {
