@@ -19,6 +19,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - [OPTIONAL] Completed Orders by user (args: user id)[token required] ```GET /completedorders/:id```
 
 ## Data Shapes
+### Note ```current_status``` in ```order``` table type is ENUM but I couldn't add it in the diagram
 <img src="screenshots/schema.png"></a>
 #### Product
 -  id
