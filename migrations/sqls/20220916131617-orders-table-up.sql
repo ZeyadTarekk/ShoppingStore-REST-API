@@ -1,4 +1,4 @@
-CREATE TYPE order_status AS ENUM('employed','self-employed','unemployed');
+-- CREATE TYPE order_status AS ENUM('employed','self-employed','unemployed');
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
