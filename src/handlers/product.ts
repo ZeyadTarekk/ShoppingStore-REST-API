@@ -41,10 +41,10 @@ const create = async (req: express.Request, res: express.Response) => {
   } catch (err) {}
 };
 
-const product_routes = (app: express.Application) => {
+const productRoutes = (app: express.Application) => {
   app.get("/products", index);
   app.get("/products/:id", show);
   app.post("/products", verifyAuthToken, create);
 };
 
-export default product_routes;
+export default productRoutes;

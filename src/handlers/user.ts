@@ -57,11 +57,11 @@ const auth = async (req: express.Request, res: express.Response) => {
   res.json(user);
 };
 
-const user_routes = (app: express.Application) => {
+const userRoutes = (app: express.Application) => {
   app.get("/users", verifyAuthToken, index);
   app.get("/users/:id", verifyAuthToken, show);
   app.post("/users", create);
   app.post("/authanticate", auth);
 };
 
-export default user_routes;
+export default userRoutes;

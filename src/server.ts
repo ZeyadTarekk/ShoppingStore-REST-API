@@ -2,8 +2,8 @@ import * as express from "express";
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-import product_routes from "./handlers/product";
-import user_routes from "./handlers/user";
+import productRoutes from "./handlers/product";
+import userRoutes from "./handlers/user";
 const address: string = "0.0.0.0:3000";
 
 app.use(bodyParser.json());
@@ -13,8 +13,8 @@ app.get("/", function (req: express.Request, res: express.Response) {
   res.send("Hello World!");
 });
 
-product_routes(app);
-user_routes(app);
+productRoutes(app);
+userRoutes(app);
 app.listen(3000, function () {
   console.log(`starting app on: ${address}`);
 });
