@@ -7,7 +7,6 @@ export type Product = {
 };
 
 export class ProductStore {
-  
   async index(): Promise<Product[]> {
     try {
       const connection = await Client.connect();
@@ -33,6 +32,22 @@ export class ProductStore {
       return result.rows[0];
     } catch (err) {
       throw new Error(`Could not find product ${id}. Error: ${err}`);
+    }
+  }
+
+  async create(product: Product): Promise<Product> {
+    try {
+      const connection = await Client.connect();
+      const sql =
+        "INSERT INTO products(name,price) VALUES(($1),($2)) RETURNING *";
+
+      const result = await connection.query(sql, [product.name, product.price]);
+      const createdUser = result.rows[0];
+      connection.release();
+
+      return createdUser;
+    } catch (err) {
+      throw new Error(`unable to create product (${product.name}) : ${err}`);
     }
   }
 }
