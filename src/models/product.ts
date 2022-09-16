@@ -6,7 +6,7 @@ export type Product = {
   price: Number;
 };
 
-export class ProductSore {
+export class ProductStore {
   
   async index(): Promise<Product[]> {
     try {
