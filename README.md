@@ -72,38 +72,15 @@ npm install
 
 1. **_Create .env file and add your envirnoment variables_**
 
-```POSTGRES_HOST```
-
-<br>
-
-```POSTGRES_DB```
-
-<br>
-
-```POSTGRES_TEST_DB```
-
-<br>
-
-```POSTGRES_USER```
-
-<br>
-
-```POSTGRES_PASSWORD```
-
-<br>
-
-```ENV="dev"```
-
-<br>
-
-```BCRYPT_PASSWORD```
-
-<br>
-
-```SALT_ROUNDS```
-
-<br>
-```TOKEN_SECRET```
+- ```POSTGRES_HOST```
+- ```POSTGRES_DB```
+- ```POSTGRES_TEST_DB```
+- ```POSTGRES_USER```
+- ```POSTGRES_PASSWORD```
+- ```ENV="dev"```
+- ```BCRYPT_PASSWORD```
+- ```SALT_ROUNDS```
+- ```TOKEN_SECRET```
 
 
 2. **_Running on development mode_**
