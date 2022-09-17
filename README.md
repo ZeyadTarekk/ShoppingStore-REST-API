@@ -68,7 +68,7 @@ npm install
 
 ### Running <a name = "running"></a>
 
-1. **_Create .env file and add your envirnoment variables_**
+1. **_Create .env file and add your environment variables_**
 
 - ```POSTGRES_HOST```
 - ```POSTGRES_DB```
