@@ -83,7 +83,7 @@ npm install
 2. **_Running database migrations**
 
 ```sh
-npm run migrationup
+npm run migrateup
 ```
 
 3. **_Running on development mode_**
