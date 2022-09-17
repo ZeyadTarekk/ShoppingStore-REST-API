@@ -111,7 +111,8 @@ npm run test
 - **Node.js**
 - **Express.js**
 - **TypeScript**
-- **Jasmine**
+- **PostgreSQL**
+- **Jasmine for testing**
 
 
 ## Contributors <a name = "Contributors"></a>
