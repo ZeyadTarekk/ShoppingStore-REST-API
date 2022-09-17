@@ -80,7 +80,7 @@ npm install
 - ```SALT_ROUNDS```
 - ```TOKEN_SECRET```
 
-2. **_Running database migrations**
+2. **_Running database migrations_**
 
 ```sh
 npm run migrateup
