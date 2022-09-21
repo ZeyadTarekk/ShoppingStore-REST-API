@@ -92,8 +92,6 @@ npm run migrateup
 npm run start
 ```
 
-Open http://localhost:3000 with your browser to see the result
-
 ### Building for production <a name = "Build"></a>
 1. **_Compiling for production mode_**
 
